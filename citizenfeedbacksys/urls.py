@@ -15,11 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from django.conf.urls import url
-from mainapp.views import bar_graph, feedbacks, home,adm,mainadm,otp_verify,feedback
-from django.views.static import serve
-from django.conf.urls.static import static
-from django.conf import settings
+
+from mainapp.views import bar_graph, home,adm,mainadm,otp_verify,feedback
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,8 +26,6 @@ urlpatterns = [
     path('otp/',otp_verify,name='otp'),
     path('captcha',include("captcha.urls")),
     path('feedback/',feedback,name='fb_form'),
-    path('feedbacks/',feedbacks,name='feedbacks'),
+    # path('feedbacks/',feedbacks,name='feedbacks'),
     path('bar-graph/',bar_graph,name='bar_graph'),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
-] 
+]
